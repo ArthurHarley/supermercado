@@ -1,0 +1,19 @@
+.container-produtos {
+    width: 85%;
+    max-width: 1400px;
+    min-height: 700px;
+
+    margin: 50px auto;
+
+    background-color: #1a1a1a;
+
+    border-radius: 25px;
+
+    border: 2px solid #333;
+
+    box-shadow:
+        0 0 15px rgba(255, 0, 0, 0.2),
+        0 0 30px rgba(199, 125, 255, 0.1);
+
+    padding: 30px;
+}
