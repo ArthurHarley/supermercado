@@ -1,0 +1,50 @@
+.produto-detalhe {
+
+    width: 85%;
+
+    margin: 50px auto;
+
+    background-color: #1a1a1a;
+
+    border-radius: 25px;
+
+    padding: 40px;
+
+    display: flex;
+
+    gap: 50px;
+
+    color: white;
+}
+
+.imagem {
+    flex: 1;
+}
+
+.imagem img {
+
+    width: 100%;
+
+    max-width: 400px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 20px;
+}
+
+.informacoes {
+    flex: 2;
+}
+
+.informacoes h1 {
+    margin-bottom: 20px;
+}
+
+.informacoes h2 {
+
+    color: #66ff99;
+
+    margin-bottom: 20px;
+}

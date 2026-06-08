@@ -1,0 +1,36 @@
+@if(produto) {
+
+<div class="produto-detalhe">
+
+    <div class="imagem">
+        <img
+          [src]="produto.image"
+          [alt]="produto.title"
+        >
+    </div>
+
+    <div class="informacoes">
+
+        <h1>{{ produto.title }}</h1>
+
+        <h2>R$ {{ produto.price }}</h2>
+
+        <p>{{ produto.description }}</p>
+
+        <p>Categoria: {{ produto.category }}</p>
+
+        <p>Avaliação: {{ produto?.rating?.rate }}</p>
+
+        <p>Total de avaliações: {{ produto?.rating?.count }}</p>
+
+        <p>ID: {{ produto.id }}</p>
+
+    </div>
+
+</div>
+
+} @else {
+
+<p>Carregando produto...</p>
+
+}
