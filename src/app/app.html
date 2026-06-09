@@ -10,8 +10,34 @@
 
     <!-- Login (direita) -->
     <div class="login">
-      <button>Login</button>
-    </div>
+    @if(usuario){
+
+      <div class="usuario-logado">
+
+        <span>
+          Olá,
+          {{ usuario.name.firstname }}
+        </span>
+
+        <button routerLink="/perfil">
+          Minha Conta
+        </button>
+
+        <button
+          class="sair"
+          (click)="sair()">
+          Sair
+        </button>
+
+      </div>
+
+    } @else {
+
+      <button routerLink="/login">
+        Login
+      </button>
+    }
+  </div>
 
   </header>
 
@@ -21,3 +47,8 @@
   </main>
 
 </div>
+
+<!--
+Usuário: mor_2314
+Senha: 83r5^_
+-->

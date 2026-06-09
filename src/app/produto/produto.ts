@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
 import { FakeStore } from '../services/fake-store';
 
 @Component({
   selector: 'app-produto',
   standalone: true,
+  imports: [RouterModule],
   templateUrl: './produto.html',
   styleUrl: './produto.css'
 })

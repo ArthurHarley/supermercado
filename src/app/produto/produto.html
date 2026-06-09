@@ -3,27 +3,68 @@
 <div class="produto-detalhe">
 
     <div class="imagem">
+
         <img
           [src]="produto.image"
           [alt]="produto.title"
         >
+
     </div>
 
     <div class="informacoes">
 
+        <span class="categoria">
+            {{ produto.category }}
+        </span>
+
         <h1>{{ produto.title }}</h1>
 
-        <h2>R$ {{ produto.price }}</h2>
+        <div class="avaliacao">
 
-        <p>{{ produto.description }}</p>
+            ⭐ {{ produto?.rating?.rate }}
 
-        <p>Categoria: {{ produto.category }}</p>
+            <span>
+                ({{ produto?.rating?.count }} avaliações)
+            </span>
 
-        <p>Avaliação: {{ produto?.rating?.rate }}</p>
+        </div>
 
-        <p>Total de avaliações: {{ produto?.rating?.count }}</p>
+        <h2>
+            R$ {{ produto.price }}
+        </h2>
 
-        <p>ID: {{ produto.id }}</p>
+        <p class="descricao">
+            {{ produto.description }}
+        </p>
+
+        <div class="dados">
+
+            <div class="info-box">
+                <strong>ID</strong>
+                <span>{{ produto.id }}</span>
+            </div>
+
+            <div class="info-box">
+                <strong>Categoria</strong>
+                <span>{{ produto.category }}</span>
+            </div>
+
+        </div>
+
+        <div class="acoes">
+
+            <button class="btn-carrinho">
+                🛒 Adicionar ao Carrinho
+            </button>
+
+            <button
+                class="btn-voltar"
+                routerLink="/home"
+            >
+                ← Voltar
+            </button>
+
+        </div>
 
     </div>
 
@@ -31,6 +72,8 @@
 
 } @else {
 
-<p>Carregando produto...</p>
+<div class="loading">
+    Carregando produto...
+</div>
 
 }

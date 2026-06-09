@@ -46,3 +46,28 @@
 .conteudo {
     padding: 20px;
 }
+
+.usuario-logado {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.usuario-logado span {
+
+    font-weight: bold;
+
+    color: white;
+
+    margin-right: 10px;
+}
+
+.sair {
+
+    background: #ff3b3b !important;
+
+    color: white !important;
+}

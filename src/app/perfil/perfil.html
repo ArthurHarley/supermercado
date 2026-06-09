@@ -1,0 +1,62 @@
+@if(usuario){
+
+<div class="perfil-container">
+
+    <div class="perfil-card">
+
+        <div class="avatar">
+
+            {{
+              usuario.name.firstname[0]
+            }}{{
+              usuario.name.lastname[0]
+            }}
+
+        </div>
+
+        <h1>
+            {{ usuario.name.firstname }}
+            {{ usuario.name.lastname }}
+        </h1>
+
+        <p class="username">
+            @{{ usuario.username }}
+        </p>
+
+        <div class="info">
+
+            <div class="item">
+                <span>Email</span>
+                <strong>{{ usuario.email }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Telefone</span>
+                <strong>{{ usuario.phone }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Cidade</span>
+                <strong>{{ usuario.address.city }}</strong>
+            </div>
+
+            <div class="item">
+                <span>Rua</span>
+                <strong>{{ usuario.address.street }}</strong>
+            </div>
+
+        </div>
+
+        <div class="acoes">
+
+            <button routerLink="/home">
+                Voltar à Loja
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+}

@@ -1,0 +1,35 @@
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h1>Entrar</h1>
+
+        <p class="subtitulo">
+            Acesse sua conta no Mercado Big Bom
+        </p>
+
+        <input
+            type="text"
+            placeholder="Usuário"
+            [(ngModel)]="username"
+        >
+
+        <input
+            type="password"
+            placeholder="Senha"
+            [(ngModel)]="password"
+        >
+
+        <button (click)="entrar()">
+            Entrar
+        </button>
+
+        @if(mensagem){
+            <p class="erro">
+                {{ mensagem }}
+            </p>
+        }
+
+    </div>
+
+</div>
