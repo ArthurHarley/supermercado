@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { FakeStore } from '../services/fake-store';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -23,9 +24,14 @@ import { FakeStore } from '../services/fake-store';
 })
 export class Login {
 
-  private fakeStore = inject(FakeStore);
+  private fakeStore =
+    inject(FakeStore);
 
-  private router = inject(Router);
+  private router =
+    inject(Router);
+
+  private auth =
+    inject(AuthService);
 
   constructor(
     @Inject(PLATFORM_ID)
@@ -41,19 +47,17 @@ export class Login {
   entrar() {
 
     this.fakeStore
-      .login(this.username, this.password)
+      .login(
+        this.username,
+        this.password
+      )
       .subscribe({
 
         next: (res: any) => {
 
-          if (isPlatformBrowser(this.platformId)) {
-
-            localStorage.setItem(
-              'token',
-              res.token
-            );
-
-          }
+          this.auth.salvarToken(
+            res.token
+          );
 
           this.fakeStore
             .getUserById(1)
@@ -61,14 +65,10 @@ export class Login {
 
               next: (usuario: any) => {
 
-                if (isPlatformBrowser(this.platformId)) {
-
-                  localStorage.setItem(
-                    'usuario',
-                    JSON.stringify(usuario)
+                this.auth
+                  .salvarUsuario(
+                    usuario
                   );
-
-                }
 
                 this.router.navigate(
                   ['/perfil']

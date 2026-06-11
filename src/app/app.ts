@@ -1,64 +1,51 @@
 import {
   Component,
-  Inject,
-  PLATFORM_ID,
-  signal
+  signal,
+  inject,
+  OnInit
 } from '@angular/core';
-
-import {
-  isPlatformBrowser
-} from '@angular/common';
 
 import {
   RouterOutlet,
   RouterModule
 } from '@angular/router';
 
+import { AuthService } from './services/auth.service';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterModule],
+  imports: [
+    RouterOutlet,
+    RouterModule
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
+export class App implements OnInit {
 
-  protected readonly title = signal('supermercado');
+  protected readonly title =
+    signal('supermercado');
+
+  private auth =
+    inject(AuthService);
 
   usuario: any = null;
 
-  constructor(
-    @Inject(PLATFORM_ID)
-    private platformId: Object
-  ) {
+  ngOnInit() {
 
-    if (isPlatformBrowser(this.platformId)) {
+    console.log('APP ONINIT');
 
-      const dados =
-        localStorage.getItem('usuario');
-
-      if (dados) {
-
-        this.usuario =
-          JSON.parse(dados);
-
-      }
-
-    }
+    this.usuario =
+      this.auth.getUsuario();
 
   }
 
   sair() {
 
-    if (isPlatformBrowser(this.platformId)) {
+    this.auth.logout();
 
-      localStorage.removeItem('token');
-
-      localStorage.removeItem('usuario');
-
-      window.location.reload();
-
-    }
+    window.location.reload();
 
   }
 

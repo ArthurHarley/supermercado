@@ -1,0 +1,63 @@
+<div class="carrinho-container">
+
+    <h1>
+        🛒 Meu Carrinho
+    </h1>
+
+    @if(produtos.length > 0){
+
+        <div class="lista-produtos">
+
+            @for(produto of produtos; track produto.id){
+
+                <div class="produto-card">
+
+                    <img
+                      [src]="produto.image"
+                      [alt]="produto.title"
+                    >
+
+                    <div class="dados">
+
+                        <h3>
+                            {{ produto.title }}
+                        </h3>
+
+                        <p>
+                            R$ {{ produto.price }}
+                        </p>
+
+                    </div>
+
+                    <button
+                      class="btn-remover"
+                      (click)="remover(produto.id)"
+                    >
+                        Remover
+                    </button>
+
+                </div>
+
+            }
+
+        </div>
+
+    } @else {
+
+        <div class="vazio">
+
+            Seu carrinho está vazio.
+
+        </div>
+
+    }
+
+    <button
+      class="btn-voltar"
+      routerLink="/home">
+
+      ← Continuar Comprando
+
+    </button>
+
+</div>

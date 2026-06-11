@@ -1,24 +1,25 @@
 <div class="container-produtos">
-    <div class="container-produtos">
 
-    @for(produto of produtos; track produto.id) {
+  @for(produto of produtos; track produto.id) {
 
-        <div class="card-produto" (click)="abrirProduto(produto.id)">
+    <div
+      class="card-produto"
+      (click)="abrirProduto(produto.id)"
+    >
 
-        <img
-            [src]="produto.image"
-            [alt]="produto.title"
-        >
+      <img
+        [src]="produto.image"
+        [alt]="produto.title"
+      >
 
-        <h3>{{ produto.title }}</h3>
+      <h3>{{ produto.title }}</h3>
 
-        <p class="preco">
-            R$ {{ produto.price }}
-        </p>
-
-        </div>
-
-    }
+      <p class="preco">
+        R$ {{ produto.price }}
+      </p>
 
     </div>
+
+  }
+
 </div>

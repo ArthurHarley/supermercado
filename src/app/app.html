@@ -1,47 +1,50 @@
 <div class="pagina">
 
-  <!-- Barra Superior -->
   <header class="topbar">
-    
-    <!-- Logo (esquerda) -->
+
     <div class="logo">
       Mercado Big Bom
     </div>
 
-    <!-- Login (direita) -->
     <div class="login">
-    @if(usuario){
 
-      <div class="usuario-logado">
+      @if(usuario){
 
-        <span>
-          Olá,
-          {{ usuario.name.firstname }}
-        </span>
+        <div class="usuario-logado">
 
-        <button routerLink="/perfil">
-          Minha Conta
+          <span>
+            Olá,
+            {{ usuario.name.firstname }}
+          </span>
+
+          <button routerLink="/carrinho">
+            🛒 Carrinho
+          </button>
+
+          <button routerLink="/perfil">
+            Minha Conta
+          </button>
+
+          <button
+            class="sair"
+            (click)="sair()">
+            Sair
+          </button>
+
+        </div>
+
+      } @else {
+
+        <button routerLink="/login">
+          Login
         </button>
 
-        <button
-          class="sair"
-          (click)="sair()">
-          Sair
-        </button>
+      }
 
-      </div>
-
-    } @else {
-
-      <button routerLink="/login">
-        Login
-      </button>
-    }
-  </div>
+    </div>
 
   </header>
 
-  <!-- Conteúdo das páginas -->
   <main class="conteudo">
     <router-outlet></router-outlet>
   </main>

@@ -1,5 +1,13 @@
-import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import {
+  Component,
+  inject,
+  ChangeDetectorRef
+} from '@angular/core';
+
+import {
+  ActivatedRoute,
+  RouterModule
+} from '@angular/router';
 
 import { FakeStore } from '../services/fake-store';
 
@@ -16,6 +24,8 @@ export class Produto {
 
   private fakeStore = inject(FakeStore);
 
+  private cdr = inject(ChangeDetectorRef);
+
   produto: any = null;
 
   constructor() {
@@ -24,34 +34,53 @@ export class Produto {
       this.route.snapshot.paramMap.get('id')
     );
 
-    console.log('ID recebido:', id);
-
-    this.fakeStore.getProductById(id)
+    this.fakeStore
+      .getProductById(id)
       .subscribe({
+
         next: (data) => {
-          console.log('Produto recebido:', data);
+
+          console.log(
+            'Produto recebido:',
+            data
+          );
+
           this.produto = data;
+
+          this.cdr.detectChanges();
+
         },
+
         error: (err) => {
-          console.error('Erro:', err);
+
+          console.error(err);
+
         }
+
       });
 
   }
 
-  // constructor() {
+  adicionarAoCarrinho() {
 
-  //   const id = Number(
-  //     this.route.snapshot.paramMap.get('id')
-  //   );
+    if (!this.produto) {
+      return;
+    }
 
-  //   this.fakeStore.getProductById(id)
-  //     .subscribe({
-  //       next: (data) => {
-  //         this.produto = data;
-  //       }
-  //     });
+    const carrinho =
+      JSON.parse(
+        localStorage.getItem('carrinho') || '[]'
+      );
 
-  // }
+    carrinho.push(this.produto);
+
+    localStorage.setItem(
+      'carrinho',
+      JSON.stringify(carrinho)
+    );
+
+    alert('Produto adicionado ao carrinho!');
+
+  }
 
 }
